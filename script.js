@@ -1,11 +1,11 @@
 let num1 = 0;
 let num2 = 0;
 let opcion = 0;
-let nuevoNumero = false;
+let nuevo = true;
 
 let pantalla = document.querySelector(".pantalla");
-let botones = document.querySelectorAll(".btn");
 
+let botones = document.querySelectorAll(".btn");
 
 for (let i = 0; i < botones.length; i++) {
 
@@ -24,29 +24,29 @@ for (let i = 0; i < botones.length; i++) {
         else if (boton == "+") {
             num1 = Number(pantalla.textContent);
             opcion = 1;
-            nuevoNumero = true;
+            nuevo = true;
         }
 
         else if (boton == "-") {
             num1 = Number(pantalla.textContent);
             opcion = 2;
-            nuevoNumero = true;
+            nuevo = true;
         }
 
         else if (boton == "*") {
             num1 = Number(pantalla.textContent);
             opcion = 3;
-            nuevoNumero = true;
+            nuevo = true;
         }
 
         else if (boton == "/") {
             num1 = Number(pantalla.textContent);
             opcion = 4;
-            nuevoNumero = true;
+            nuevo = true;
         }
 
         else if (boton == "=") {
-            operacion();
+            calcular();
         }
 
         else {
@@ -58,54 +58,41 @@ for (let i = 0; i < botones.length; i++) {
 
 function numero(n) {
 
-    if (nuevoNumero == true) {
+    if (nuevo == true) {
         pantalla.textContent = n;
-        nuevoNumero = false;
-    }
-
-    else if (pantalla.textContent == "0") {
-        pantalla.textContent = n;
+        nuevo = false;
     }
 
     else {
         pantalla.textContent = pantalla.textContent + n;
     }
-
 }
 
 
-function operacion() {
+function calcular() {
 
     num2 = Number(pantalla.textContent);
 
     switch(opcion) {
 
         case 1:
-            let totalSuma = num1 + num2;
-            pantalla.textContent = totalSuma;
+            pantalla.textContent = num1 + num2;
             break;
 
         case 2:
-            let totalResta = num1 - num2;
-            pantalla.textContent = totalResta;
+            pantalla.textContent = num1 - num2;
             break;
 
         case 3:
-            let totalMulti = num1 * num2;
-            pantalla.textContent = totalMulti;
+            pantalla.textContent = num1 * num2;
             break;
 
         case 4:
-            let totalDivi = num1 / num2;
-            pantalla.textContent = totalDivi;
-            break;
-
-        default:
-            alert("Opción no válida");
+            pantalla.textContent = num1 / num2;
             break;
     }
 
-    nuevoNumero = true;
+    nuevo = true;
 }
 
 
@@ -114,7 +101,7 @@ function limpiar() {
     num1 = 0;
     num2 = 0;
     opcion = 0;
-    nuevoNumero = false;
+    nuevo = true;
 
     pantalla.textContent = "0";
 }
@@ -122,57 +109,106 @@ function limpiar() {
 
 function borrar() {
 
-    if (pantalla.textContent.length > 1) {
-        pantalla.textContent = pantalla.textContent.slice(0, -1);
-    }
+    pantalla.textContent = pantalla.textContent.slice(0, -1);
 
-    else {
+    if (pantalla.textContent == "") {
         pantalla.textContent = "0";
     }
+}let num1 = 0;
+let num2 = 0;
+let opcion = 0;
+let nuevo = true;
+
+let pantalla = document.querySelector(".pantalla");
+
+let botones = document.querySelectorAll(".btn");
+
+for (let i = 0; i < botones.length; i++) {
+
+    botones[i].onclick = function() {
+
+        let boton = botones[i].textContent;
+
+        if (boton == "C") {
+            limpiar();
+        }
+
+        else if (boton == "⌫") {
+            borrar();
+        }
+
+        else if (boton == "+") {
+            num1 = Number(pantalla.textContent);
+            opcion = 1;
+            nuevo = true;
+        }
+
+        else if (boton == "-") {
+            num1 = Number(pantalla.textContent);
+            opcion = 2;
+            nuevo = true;
+        }
+
+        else if (boton == "*") {
+            num1 = Number(pantalla.textContent);
+            opcion = 3;
+            nuevo = true;
+        }
+
+        else if (boton == "/") {
+            num1 = Number(pantalla.textContent);
+            opcion = 4;
+            nuevo = true;
+        }
+
+        else if (boton == "=") {
+            calcular();
+        }
+
+        else {
+            numero(boton);
+        }
+    }
 }
-    else if (pantalla.textContent == "0") {
+
+
+function numero(n) {
+
+    if (nuevo == true) {
         pantalla.textContent = n;
+        nuevo = false;
     }
 
     else {
         pantalla.textContent = pantalla.textContent + n;
     }
-
 }
 
 
-function operacion() {
+function calcular() {
 
     num2 = Number(pantalla.textContent);
 
     switch(opcion) {
 
         case 1:
-            let totalSuma = num1 + num2;
-            pantalla.textContent = totalSuma;
+            pantalla.textContent = num1 + num2;
             break;
 
         case 2:
-            let totalResta = num1 - num2;
-            pantalla.textContent = totalResta;
+            pantalla.textContent = num1 - num2;
             break;
 
         case 3:
-            let totalMulti = num1 * num2;
-            pantalla.textContent = totalMulti;
+            pantalla.textContent = num1 * num2;
             break;
 
         case 4:
-            let totalDivi = num1 / num2;
-            pantalla.textContent = totalDivi;
-            break;
-
-        default:
-            alert("Opción no válida");
+            pantalla.textContent = num1 / num2;
             break;
     }
 
-    nuevoNumero = true;
+    nuevo = true;
 }
 
 
@@ -181,7 +217,7 @@ function limpiar() {
     num1 = 0;
     num2 = 0;
     opcion = 0;
-    nuevoNumero = false;
+    nuevo = true;
 
     pantalla.textContent = "0";
 }
@@ -189,64 +225,12 @@ function limpiar() {
 
 function borrar() {
 
-    if (pantalla.textContent.length > 1) {
-        pantalla.textContent = pantalla.textContent.slice(0, -1);
-    }
+    pantalla.textContent = pantalla.textContent.slice(0, -1);
 
-    else {
+    if (pantalla.textContent == "") {
         pantalla.textContent = "0";
     }
-}
-
-function operacion() {
-
-    num2 = Number(pantalla.textContent);
-
-    switch(opcion) {
-
-        case 1:
-            let totalSuma = num1 + num2;
-            pantalla.textContent = totalSuma;
-            break;
-
-        case 2:
-            let totalResta = num1 - num2;
-            pantalla.textContent = totalResta;
-            break;
-
-        case 3:
-            let totalMulti = num1 * num2;
-            pantalla.textContent = totalMulti;
-            break;
-
-        case 4:
-            let totalDivi = num1 / num2;
-            pantalla.textContent = totalDivi;
-            break;
-
-        default:
-            alert("Opción no válida");
-            break;
-    }
-
-}
-
-
-function limpiar() {
-
-    num1 = 0;
-    num2 = 0;
-    opcion = 0;
-
-    pantalla.textContent = "0";
-
-}
-
-
-function borrar() {
-
-    if (pantalla.textContent.length > 1) {
-        pantalla.textContent = pantalla.textContent.slice(0, -1);
+}        pantalla.textContent = pantalla.textContent.slice(0, -1);
     }
     else {
         pantalla.textContent = "0";
